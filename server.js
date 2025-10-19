@@ -1,8 +1,11 @@
+require("dotenv").config()
 const express = require("express");
-const PORT = 9000;
+const seqo = require("./config/dbconfig.js")
+
+const PORT = process.env._PORT  
 
 const app = express();
-
+seqo()
 
 app.get("/",(req,res)=>{
     res.send("wellcome to school system")
