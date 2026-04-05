@@ -1,4 +1,4 @@
-const Student = require('../models/Student.js');
+const Student = require('../models/students.js');
 const sequelize = require('../config/dbconfig.js');
 
 
@@ -12,4 +12,15 @@ const registerStudent = async (req,res) =>{
     }
 };
 
-module.exports = { registerStudent };
+const registerAdmin = async (req,res) =>{
+    const {name,email} = req.body;
+    try {
+        const admin = await User.create({name,email});
+        res.status(201).json({message: "Admin registered successfully"});
+    } catch (error) {
+        res.status(400).json({error: error.message});
+    }
+};
+
+
+module.exports = { registerStudent, registerAdmin };

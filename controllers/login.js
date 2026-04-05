@@ -1,16 +1,24 @@
-//const Router = require("express")
-const User = require("../models/admin")
+const User = require("../models/admin.js");
 
-//const Router = Router.Router()
+// Admin login
+exports.loginAdmin = (req, res) => {
+  const { name, email } = req.body;
 
-exports.loginAdmin = (req,res) => {
+  User.findOne({ where: { name, email } })
+    .then(user => {
+      if (user) {
+        res.send("You are registered as admin");
+      } else {
+        res.status(404).send("Admin not found");
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).send("Server error");
+    });
+};
 
-    res.send("u are registed ")
-
-}
-
-exports.loginStudent = (req,res) =>{
-    res.send("u are registed student ")
- 
-
-}
+// Student login
+exports.loginStudent = (req, res) => {
+  res.send("You are registered as student");
+};
