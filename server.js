@@ -1,14 +1,16 @@
 require("dotenv").config()
 const express = require("express");
-const seqo = require("./config/dbconfig.js")
+const {connectToDatabase} = require("./config/dbconfig.js")
+const adminRouter = require("./routes/admin")
+connectToDatabase()
 
-const PORT = process.env._PORT  
+
+const PORT = process.env.SERVER_PORT
+
 
 const app = express();
-seqo()
 
-app.get("/",(req,res)=>{
-    res.send("wellcome to school system")
-})
+app.use(adminRouter)
+
 
 app.listen(PORT,console.log(`server running on port ${PORT}`))
