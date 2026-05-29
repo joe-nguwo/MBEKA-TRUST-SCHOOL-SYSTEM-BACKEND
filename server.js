@@ -1,21 +1,22 @@
-require("dotenv").config()
-const express = require("express");
-const {connectToDatabase} = require("./config/dbconfig.js")
-const adminRouter = require("./routes/admin.js")
-const studentRouter = require("./routes/student.js")
-const Admin = require("./models/admin.js");
-const Student = require("./models/students.js");
+import dotenv from "dotenv"
+import cors from "cors"
+import express from "express"
+import  connectToDatabase  from "./config/dbconfig.js";
+import adminRouter from "./routes/admin.js"
+import studentRouter from "./routes/student.js"
+import Admin from "./models/admin.js"
+import Student from "./models/students.js";
 
+dotenv.config()
 connectToDatabase()
 Admin.sync()
 Student.sync()
 
-
 const PORT = process.env.SERVER_PORT
 
-
 const app = express();
-
+app.use(cors())
+app.use(express.json())
 app.use("/api/v1", adminRouter);
 app.use("/api/v1", studentRouter);
 

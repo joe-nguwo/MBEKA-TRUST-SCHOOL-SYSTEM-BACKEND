@@ -1,14 +1,13 @@
-const express = require("express")
-const {loginAdmin,loginStudent} = require("../controllers/login.js")
-const adminRegister = require("../controllers/register.js")
+import  express from "express"
+import {loginAdmin,loginStudent} from "../controllers/login.js"
+import  {registerStudent, registerAdmin} from "../controllers/register.js"
 
-const  middle =  require( "../middleware/login.js")
 
-Router = express.Router()
+const Router = express.Router()
 
-Router.post("/login/admin",middle,loginAdmin)
-Router.post("/admin/register",adminRegister.registerAdmin)
+Router.post("/login/admin",loginAdmin)
+Router.post("/admin/register",registerAdmin)
 Router.post("/login/student",loginStudent)
 
-module.exports = Router
+export default Router 
 

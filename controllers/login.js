@@ -1,13 +1,13 @@
-const User = require("../models/admin.js");
+import  Admin from "../models/admin.js";
 
 // Admin login
-exports.loginAdmin = (req, res) => {
+export const loginAdmin = (req, res) => {
   const { name, email } = req.body;
 
-  User.findOne({ where: { name, email } })
+  Admin.findOne({ where: { name:name,password:email } })
     .then(user => {
       if (user) {
-        res.send("You are registered as admin");
+        res.status(200).send("You are logged in as admin");
       } else {
         res.status(404).send("Admin not found");
       }
@@ -19,6 +19,6 @@ exports.loginAdmin = (req, res) => {
 };
 
 // Student login
-exports.loginStudent = (req, res) => {
+export const loginStudent = (req, res) => {
   res.send("You are registered as student");
 };

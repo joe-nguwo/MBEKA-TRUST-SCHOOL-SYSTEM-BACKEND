@@ -1,21 +1,22 @@
-const Student = require('../models/students.js');
-const sequelize = require('../config/dbconfig.js');
+import  Student from '../models/students.js';
+import  sequelize from '../config/dbconfig.js';
+import Admin from '../models/admin.js';
 
 
-const registerStudent = async (req,res) =>{
-    const {name,email,age} = req.body;
+export const registerStudent = async (req,res) =>{
+    const {name,email,password} = req.body;
     try {
-        const student = await Student.create({name,email,age});
+        const student = await Student.create({name,email,password});
         res.status(201).json({message: "Student registered successfully"});
     } catch (error) {
         res.status(400).json({error: error.message});
     }
 };
 
-const registerAdmin = async (req,res) =>{
-    const {name,email} = req.body;
+export const registerAdmin = async (req,res) =>{
+    const {name,email,password} = req.body;
     try {
-        const admin = await User.create({name,email});
+        const admin = await Admin.create({name,email,password});
         res.status(201).json({message: "Admin registered successfully"});
     } catch (error) {
         res.status(400).json({error: error.message});
@@ -23,4 +24,3 @@ const registerAdmin = async (req,res) =>{
 };
 
 
-module.exports = { registerStudent, registerAdmin };

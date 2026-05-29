@@ -1,8 +1,8 @@
-const {DataTypes} = require('sequelize');
+import  {DataTypes} from 'sequelize';
 
-const {sequelize} = require("../config/dbconfig.js");
+import  {sequelize} from "../config/dbconfig.js";
 
-const Student  = sequelize.define("Student",{
+ const Student  = sequelize.define("Student",{
     name:{
         type:DataTypes.STRING,
         allowNull:false},
@@ -15,4 +15,7 @@ const Student  = sequelize.define("Student",{
     }
     )
 
-    module.exports = Student;
+    export default Student
+
+
+

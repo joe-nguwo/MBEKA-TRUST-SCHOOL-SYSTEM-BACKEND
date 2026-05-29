@@ -1,8 +1,8 @@
-const {DataTypes} = require("sequelize")
+import  {DataTypes} from "sequelize"
 
-const {sequelize} = require("../config/dbconfig.js")
+import {sequelize} from "../config/dbconfig.js"
 
-const User = sequelize.define("User",{
+ const Admin = sequelize.define("Admin",{
     name:{
         type:DataTypes.STRING,
         allowNull:false,
@@ -10,9 +10,15 @@ const User = sequelize.define("User",{
     email:{
          type:DataTypes.STRING,
          allowNull:false,
+    },
+    password:{
+        type:DataTypes.STRING,
+        allowNull:false,
     }
 })
 
-module.exports = User;
+export default Admin
+
+
 
 // code for connecting to  posgress
