@@ -26,7 +26,7 @@ export const registerAdmin = async (req,res) =>{
         process.env.ACCESS_TOKEN_KEY,
         {expiresIn:"7d"}
     )
-        res.status(201).json({message: "Admin registered successfully","token":accessToken});
+        res.status(201).json({status:1,message: "Admin registered successfully","token":accessToken});
     } catch (error) {
         res.status(400).json({error: error.message});
     }

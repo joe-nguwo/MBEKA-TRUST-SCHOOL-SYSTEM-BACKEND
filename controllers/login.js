@@ -21,14 +21,14 @@ export const loginAdmin = (req, res) => {
         );
         res
           .status(200)
-          .json({ message: "you have succefuly loged in", token: accessToken });
+          .json({status:1, message: "you have succefuly loged in ", token: accessToken });
       } else {
-        res.status(404).send("Admin not found");
+        res.status(404).json({status:0, message: "Invalid credentials" });
       }
     })
     .catch((err) => {
       console.error(err);
-      res.status(500).send("Server error");
+      res.status(500).json({status:0, message: "Server error" });
     });
 };
 
