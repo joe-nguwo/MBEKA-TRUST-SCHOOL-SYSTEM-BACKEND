@@ -8,7 +8,7 @@ dotenv.config();
 export const loginAdmin = (req, res) => {
   const { name, email } = req.body;
 
-  Admin.findOne({ where: { name: name, password: email } })
+  Admin.findOne({ where: { name: name, email: email } })
     .then((user) => {
       if (user) {
         const accessToken = jwt.sign(
@@ -21,14 +21,18 @@ export const loginAdmin = (req, res) => {
         );
         res
           .status(200)
-          .json({status:1, message: "you have succefuly loged in ", token: accessToken });
+          .json({
+            status: 1,
+            message: "you have succefuly loged in ",
+            token: accessToken,
+          });
       } else {
-        res.status(404).json({status:0, message: "Invalid credentials" });
+        res.status(404).json({ status: 0, message: "Invalid credentials" });
       }
     })
     .catch((err) => {
       console.error(err);
-      res.status(500).json({status:0, message: "Server error" });
+      res.status(500).json({ status: 0, message: "Server error" });
     });
 };
 
