@@ -1,5 +1,4 @@
 import  {DataTypes} from "sequelize"
-
 import {sequelize} from "../config/dbconfig.js"
 
  const Admin = sequelize.define("Admin",{
@@ -22,4 +21,3 @@ export default Admin
 
 
 
-// code for connecting to  posgress

@@ -6,11 +6,13 @@ import adminRouter from "./routes/admin.js"
 import studentRouter from "./routes/student.js"
 import Admin from "./models/admin.js"
 import Student from "./models/students.js";
+import Books from "./models/books.js";
 
 dotenv.config()
 connectToDatabase()
 Admin.sync()
 Student.sync()
+Books.sync()
 
 const PORT = process.env.SERVER_PORT
 
