@@ -19,14 +19,23 @@ export const registerAdmin = async (req,res) =>{
     const {name,email,password} = req.body;
     try {
         const admin = await Admin.create({name,email,password});
+
+          const refreshToken = jwt.sign({
+            name:name,
+            email:email,
+            role:"admin"
+
+          },process.env.REFRESH_TOKEN_KEY,{expiresIn:"7d"})
+
            const accessToken = jwt.sign({
             name:name,
-            email:email
-        },
-        process.env.ACCESS_TOKEN_KEY,
-        {expiresIn:"7d"}
+            email:email}, process.env.ACCESS_TOKEN_KEY, {expiresIn:"7d"}
+
     )
         res.status(201).json({status:1,message: "Admin registered successfully","token":accessToken});
+        res.cookie("jwt",refreshToken,{maxAge:9000,secure:true,sameSite:'lax'
+
+        })
     } catch (error) {
         res.status(400).json({error: error.message});
     }

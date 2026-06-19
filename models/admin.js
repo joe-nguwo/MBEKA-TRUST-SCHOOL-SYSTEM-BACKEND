@@ -10,6 +10,7 @@ import {sequelize} from "../config/dbconfig.js"
     email:{
          type:DataTypes.STRING,
          allowNull:false,
+         unique:true
     },
     password:{
         type:DataTypes.STRING,

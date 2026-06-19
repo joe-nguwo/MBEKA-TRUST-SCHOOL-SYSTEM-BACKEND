@@ -8,7 +8,9 @@ import  {sequelize} from "../config/dbconfig.js";
         allowNull:false},
     email:{
         type:DataTypes.STRING,
-        allowNull:false},
+        allowNull:false,
+        unique:true
+    },
     age:{
         type:DataTypes.INTEGER,
         allowNull:false}
