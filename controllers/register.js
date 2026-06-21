@@ -22,7 +22,6 @@ export const registerAdmin = async (req,res) =>{
 
           const refreshToken = jwt.sign({
             name:name,
-            email:email,
             role:"admin"
 
           },process.env.REFRESH_TOKEN_KEY,{expiresIn:"7d"})

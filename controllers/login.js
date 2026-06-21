@@ -6,16 +6,16 @@ dotenv.config();
 
 // Admin login
 export const loginAdmin = (req, res) => {
-  const { name, email } = req.body;
+  const { name, password } = req.body;
 
-  Admin.findOne({ where: { name: name, email: email } })
+  Admin.findOne({ where: { name: name, password: password } })
     .then((user) => {
       if (user) {
 
         const accessToken = jwt.sign(
           {
             name: name,
-            email: email,
+       
           },
           process.env.ACCESS_TOKEN_KEY,
           { expiresIn: "1h" },
@@ -23,7 +23,7 @@ export const loginAdmin = (req, res) => {
 
         const refreshToken = jwt.sign({
           name:name,
-          email:email,
+        
           role:"admin"
         },process.env.REFRESH_TOKEN_KEY,{expiresIn:"8d"});
 

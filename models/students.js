@@ -1,22 +1,21 @@
-import  {DataTypes} from 'sequelize';
-import  {sequelize} from "../config/dbconfig.js";
+import { DataTypes, Model } from "sequelize";
+import { sequelize } from "../config/dbconfig.js";
 
- const Student  = sequelize.define("Student",{
+const Student  = sequelize.define("Books",{
     name:{
         type:DataTypes.STRING,
-        allowNull:false},
+          allowNull:false,
+    },
     email:{
-        type:DataTypes.STRING,
-        allowNull:false,
-        unique:true
+         type:DataTypes.STRING,
+          allowNull:false,
     },
     age:{
-        type:DataTypes.INTEGER,
-        allowNull:false}
+         type:DataTypes.STRING,
+          allowNull:false,
     }
-    )
 
-    export default Student
-
+})
 
 
+export default Student;

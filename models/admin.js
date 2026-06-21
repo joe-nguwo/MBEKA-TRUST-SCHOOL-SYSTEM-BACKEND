@@ -1,23 +1,23 @@
-import  {DataTypes} from "sequelize"
-import {sequelize} from "../config/dbconfig.js"
+import { DataTypes } from "sequelize";
+import { sequelize } from "../config/dbconfig.js";
 
- const Admin = sequelize.define("Admin",{
+
+const Admin  = sequelize.define("Books",{
     name:{
         type:DataTypes.STRING,
-        allowNull:false,
+          allowNull:false,
     },
     email:{
          type:DataTypes.STRING,
-         allowNull:false,
-         unique:true
+          allowNull:false,
     },
     password:{
-        type:DataTypes.STRING,
-        allowNull:false,
+         type:DataTypes.STRING,
+          allowNull:false,
     }
+
 })
 
-export default Admin
 
 
-
+export default Admin;

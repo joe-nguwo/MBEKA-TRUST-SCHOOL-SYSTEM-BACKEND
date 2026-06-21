@@ -9,7 +9,7 @@ const Books  = sequelize.define("Books",{
          type:DataTypes.STRING,
           allowNull:false,
     },
-    type:{
+    bookType:{
          type:DataTypes.STRING,
           allowNull:false,
     }
