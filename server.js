@@ -5,6 +5,7 @@ import  connectToDatabase  from "./config/dbconfig.js";
 import { requestLogger } from "./middleware/login.js";
 import adminRouter from "./routes/admin.js"
 import studentRouter from "./routes/student.js"
+import booksRouter from "./routes/books.js"
 import Admin from "./models/admin.js"
 import Student from "./models/students.js";
 import Books from "./models/books.js";
@@ -29,6 +30,7 @@ app.use(requestLogger)
 app.use(express.json())
 app.use("/api/v1", adminRouter);
 app.use("/api/v1", studentRouter);
+app.use("/api/vi",booksRouter)
 
 
 app.listen(PORT,console.log(`server running on port ${PORT}`))
