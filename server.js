@@ -15,6 +15,12 @@ Admin.sync()
 Student.sync()
 Books.sync()
 
+// await Admin.sync({ alter: true });
+// await Student.sync({ alter: true });
+// await Books.sync({ alter: true });
+
+// console.log("Database tables synchronized and updated successfully!");
+
 const PORT = process.env.SERVER_PORT
 
 const app = express();

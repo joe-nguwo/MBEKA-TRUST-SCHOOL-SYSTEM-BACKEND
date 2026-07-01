@@ -6,9 +6,9 @@ dotenv.config()
 
 
 export const registerStudent = async (req,res) =>{
-    const {name,email,password} = req.body;
+    const {name,email,age} = req.body;
     try {
-        const student = await Student.create({name,email,password});
+        const student = await Student.create({name,email,age});
         res.status(201).json({message: "Student registered successfully"});
     } catch (error) {
         res.status(400).json({error: error.message});
@@ -18,6 +18,7 @@ export const registerStudent = async (req,res) =>{
 export const registerAdmin = async (req,res) =>{
     const {name,email,password} = req.body;
     try {
+        
         const admin = await Admin.create({name,email,password});
 
           const refreshToken = jwt.sign({

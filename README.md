@@ -1,7 +1,9 @@
 # Mbeka-Trust-School-School-Management-System
+
 this is a backend project for mbeka school 
 
 ## Features
+
 - Rest Api endpoints
 - User Authentication with jwt
 - Sql database intergration
