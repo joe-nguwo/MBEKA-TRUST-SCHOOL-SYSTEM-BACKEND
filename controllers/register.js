@@ -29,7 +29,7 @@ export const registerAdmin = async (req,res) =>{
 
            const accessToken = jwt.sign({
             name:name,
-            email:email}, process.env.ACCESS_TOKEN_KEY, {expiresIn:"7d"}
+            email:email}, process.env.ACCESS_TOKEN_KEY, {expiresIn:"1d"}
 
     )
         res.status(201).json({status:1,message: "Admin registered successfully","token":accessToken});

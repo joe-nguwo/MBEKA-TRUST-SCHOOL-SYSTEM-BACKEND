@@ -10,15 +10,19 @@ import Admin from "./models/admin.js"
 import Student from "./models/students.js";
 import Books from "./models/books.js";
 
+
 dotenv.config()
 connectToDatabase()
-Admin.sync()
-Student.sync()
-Books.sync()
+// await Admin.sync()
+// await Student.sync()
+// await Books.sync()
 
-// await Admin.sync({ alter: true });
-// await Student.sync({ alter: true });
-// await Books.sync({ alter: true });
+
+await Admin.sync({ alter: true });
+await Student.sync({ alter: true });
+await Books.sync({ alter: true });
+
+
 
 // console.log("Database tables synchronized and updated successfully!");
 
@@ -30,7 +34,7 @@ app.use(requestLogger)
 app.use(express.json())
 app.use("/api/v1", adminRouter);
 app.use("/api/v1", studentRouter);
-app.use("/api/vi",booksRouter)
+app.use("/api/v1",booksRouter)
 
 
 app.listen(PORT,console.log(`server running on port ${PORT}`))

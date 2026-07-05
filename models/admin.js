@@ -1,23 +1,40 @@
-import { DataTypes } from "sequelize";
+import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../config/dbconfig.js";
 
+class Admin extends Model {}
 
-const Admin  = sequelize.define("Books",{
-    name:{
-        type:DataTypes.STRING,
-          allowNull:false,
+Admin.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
     },
-    email:{
-         type:DataTypes.STRING,
-          allowNull:false,
+
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    password:{
-         type:DataTypes.STRING,
-          allowNull:false,
-    }
 
-})
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true,
+      },
+    },
 
-
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  },
+  {
+    sequelize,
+    modelName: "Admin",
+    timestamps: true,
+  }
+);
 
 export default Admin;

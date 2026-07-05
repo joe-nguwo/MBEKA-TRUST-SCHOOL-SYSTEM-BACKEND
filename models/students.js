@@ -1,20 +1,55 @@
+import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../config/dbconfig.js";
-import { DataTypes } from "sequelize";
 
+class Student extends Model {}
 
-const Student = sequelize.define("Students", {
-    name: {
-        type: DataTypes.STRING,
-        allowNull: false,
+Student.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
     },
+
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
     email: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true,
+      },
     },
-    age: {
-        type: DataTypes.STRING, 
-        allowNull: false,
-    }
-});
+
+    gender: {
+      type: DataTypes.ENUM("male", "female"),
+      allowNull: true,
+    },
+
+    grade: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+
+    isActive: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    },
+  },
+  {
+    sequelize,
+    modelName: "Student",
+    timestamps: true,
+  }
+);
 
 export default Student;
