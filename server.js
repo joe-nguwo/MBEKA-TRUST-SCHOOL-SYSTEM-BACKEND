@@ -6,21 +6,13 @@ import { requestLogger } from "./middleware/login.js";
 import adminRouter from "./routes/admin.js"
 import studentRouter from "./routes/student.js"
 import booksRouter from "./routes/books.js"
-import Admin from "./models/admin.js"
-import Student from "./models/students.js";
-import Books from "./models/books.js";
+import dbMigrations from "./databases/dbMigrations.js";
+
 
 
 dotenv.config()
 connectToDatabase()
-// await Admin.sync()
-// await Student.sync()
-// await Books.sync()
-
-
-await Admin.sync({ alter: true });
-await Student.sync({ alter: true });
-await Books.sync({ alter: true });
+dbMigrations()
 
 
 
