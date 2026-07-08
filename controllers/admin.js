@@ -41,7 +41,30 @@ export const loginAdmin = (req, res) => {
     });
 };
 
-// Student login
-export const loginStudent = (req, res) => {
-  res.send("You are registered as student");
+export const registerAdmin = async (req,res) =>{
+    const {name,email,password} = req.body;
+    try {
+        
+        const admin = await Admin.create({name,email,password});
+
+          const refreshToken = jwt.sign({
+            name:name,
+            role:"admin"
+
+          },process.env.REFRESH_TOKEN_KEY,{expiresIn:"7d"})
+
+           const accessToken = jwt.sign({
+            name:name,
+            email:email}, process.env.ACCESS_TOKEN_KEY, {expiresIn:"1d"}
+
+    )
+        res.status(201).json({status:1,message: "Admin registered successfully","token":accessToken});
+        res.cookie("jwt",refreshToken,{maxAge:9000,secure:true,sameSite:'lax'
+
+        })
+    } catch (error) {
+        res.status(400).json({error: error.message});
+    }
 };
+
+

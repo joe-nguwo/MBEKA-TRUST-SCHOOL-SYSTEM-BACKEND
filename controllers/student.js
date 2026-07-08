@@ -3,6 +3,18 @@ import dotenv from "dotenv";
 import  Student from '../models/students.js';
 dotenv.config()
 
+export const addStudent = async(req,res) =>{
+    const{Fname,Lname,email,gender,grade} = req.body
+    try{
+        await Student.create({Fname,Lname,email,gender,grade})
+      res.status(201).json({message: "Student registered successfully"});
+    } catch (error) {
+        res.status(400).json({error: error.message});
+    }
+}
+
+    
+
 export const allStudents = async (req,res) =>{
     try {
         const students = await Student.findAll();
