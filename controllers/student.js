@@ -6,7 +6,7 @@ dotenv.config()
 export const addStudent = async(req,res) =>{
     const{Fname,Lname,email,gender,grade} = req.body
     try{
-        await Student.create({Fname,Lname,email,gender,grade})
+        await Student.create({firstName:Fname,lastName:Lname,email:email,gender:gender,grade:grade})
       res.status(201).json({message: "Student registered successfully"});
     } catch (error) {
         res.status(400).json({error: error.message});
