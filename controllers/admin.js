@@ -47,8 +47,9 @@ export const loginAdmin = async (req, res) => {
       .status(200)
       .cookie("refresh-token",refreshToken, {
         maxAge: 8 * 24 * 60 * 60 * 1000,
-        secure: false,
+        secure: false, 
         sameSite: "lax",
+        
       })
       .json({
         status: 1,

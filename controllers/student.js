@@ -14,11 +14,13 @@ export const addStudent = async(req,res) =>{
 }
 
     
-
 export const allStudents = async (req,res) =>{
     try {
         const students = await Student.findAll();
-        res.status(200).json({students});
+        res.status(200).json({
+            status:1,
+            message:"ok",
+            data:students});
     }
     catch (error) {
         res.status(400).json({error: error.message});
