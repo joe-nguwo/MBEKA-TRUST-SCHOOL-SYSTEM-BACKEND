@@ -7,10 +7,10 @@ dotenv.config();
 
 // Admin login
 export const loginAdmin = async (req, res) => {
-  const { name, password } = req.body;
+  const { email, password } = req.body;
 
   try {
-    const user = await Admin.findOne({ where: { name } });
+    const user = await Admin.findOne({ where: { email:email } });
 
     if (!user) {
       return res
@@ -49,6 +49,10 @@ export const loginAdmin = async (req, res) => {
         maxAge: 8 * 24 * 60 * 60 * 1000,
         secure: false, 
         sameSite: "lax",
+        httpOnly:true,
+        path:"/"
+    
+      
         
       })
       .json({
@@ -98,6 +102,7 @@ export const registerAdmin = async (req, res) => {
         maxAge:  8 * 24 * 60 * 60 * 1000,
         secure: false,
         sameSite: "lax",
+        httpOnly:true
       })
       .json({
         status: 1,
