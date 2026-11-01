@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+
 import dotenv from "dotenv";
 import  Student from '../models/students.js';
 dotenv.config()
