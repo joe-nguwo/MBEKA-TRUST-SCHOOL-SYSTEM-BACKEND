@@ -5,6 +5,7 @@ dotenv.config()
 function AuthenticateToken(req,res,next){
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1];
+    console.log("the token is ",token)
 
     if(!token){
         return res.status(401).json({

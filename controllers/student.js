@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+
 import dotenv from "dotenv";
 import  Student from '../models/students.js';
 dotenv.config()
@@ -29,6 +29,8 @@ export const allStudents = async (req,res) =>{
 
 export const deleteStudent = async (req,res) =>{
     const {id} = req.params;
+    console.log("=====")
+    console.log("here is the id",id)
     try{
         const student = await Student.destroy({where:{id}});
         if(student){

@@ -98,7 +98,7 @@ export const registerAdmin = async (req, res) => {
 
     res
       .status(201)
-      .cookie("jwt", refreshToken, {
+      .cookie("refresh-token", refreshToken, {
         maxAge:  8 * 24 * 60 * 60 * 1000,
         secure: false,
         sameSite: "lax",
