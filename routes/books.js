@@ -1,5 +1,5 @@
 import  express from "express"
-import { registerBooks,deleteBooks,allBooks } from "../controllers/book.js"
+import { registerBooks,deleteBooks,allBooks} from "../controllers/book.js"
 const Router = express.Router()
 
 

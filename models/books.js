@@ -23,6 +23,10 @@ Books.init(
       type: DataTypes.TEXT,
       allowNull: false,
   },
+  grade: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 },
   {
     sequelize,

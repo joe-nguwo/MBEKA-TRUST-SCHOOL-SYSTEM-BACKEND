@@ -3,10 +3,10 @@ import Books from '../models/books.js';
 dotenv.config()
 
 export const registerBooks = async (req,res) =>{
-    const {Title,Author,Description} = req.body;
+    const {Title,Author,Description,Grade} = req.body;
 
     try {
-        const books = await Books.create({title:Title,author:Author,description:Description});
+        const books = await Books.create({title:Title,author:Author,description:Description,grade:Grade});
         res.status(201).json({message: "Books registered successfully"});
     }
     catch (error) {

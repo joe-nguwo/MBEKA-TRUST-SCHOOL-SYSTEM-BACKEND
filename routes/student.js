@@ -6,7 +6,7 @@ const Router = express.Router()
 
 // Router.post("/students/register", AuthenticateToken,addStudent)
  Router.post("/students/register",addStudent)
-Router.get("/student/all",allStudents)
+Router.get("/students/all",allStudents)
 
 
 export default Router 

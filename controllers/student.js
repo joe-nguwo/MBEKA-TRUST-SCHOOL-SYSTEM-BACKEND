@@ -4,9 +4,9 @@ import  Student from '../models/students.js';
 dotenv.config()
 
 export const addStudent = async(req,res) =>{
-    const{ firstName,lastName,email,gender,grade} = req.body
+    const{ Fname, Lname,email,gender,grade} = req.body
     try{
-        await Student.create({firstName:firstName,lastName:lastName,email:email,gender:gender,grade:grade})
+        await Student.create({firstName:Fname,lastName:Lname,email:email,gender:gender,grade:grade})
       res.status(201).json({message: "Student registered successfully"});
     } catch (error) {
         res.status(400).json({error: error.message});

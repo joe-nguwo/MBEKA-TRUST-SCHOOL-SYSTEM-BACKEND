@@ -7,10 +7,10 @@ dotenv.config();
 
 // Admin login
 export const loginAdmin = async (req, res) => {
-  const { email, password } = req.body;
+  const { name, password } = req.body;
 
   try {
-    const user = await Admin.findOne({ where: { email:email } });
+    const user = await Admin.findOne({ where: { name: name } });
 
     if (!user) {
       return res
